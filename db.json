@@ -1,55 +1,80 @@
 {
   "users": [
     {
-      "id": "15d8",
-      "email": "Portiaa949@gmail.com",
-      "password": "Asanda@123"
+      "id": "1",
+      "email": "user@example.com",
+      "password": "password123"
     }
   ],
   "lists": [
     {
-      "id": "945a",
+      "id": "1",
       "items": [
         {
-          "id": 1727600796702,
-          "name": "ryhg",
-          "quantity": "2",
-          "category": "Electronics",
-          "note": ""
+          "id": "item1",
+          "name": "Apples",
+          "quantity": "4",
+          "category": "Groceries",
+          "note": "Buy organic if possible"
         }
       ]
     },
     {
-      "id": "a843",
-      "items": []
+      "0": {
+        "name": "Meat",
+        "quantity": "1"
+      },
+      "id": "2f0c"
     },
     {
-      "id": "a5f3",
-      "items": []
-    },
-    {
-      "id": "30f7",
-      "items": []
-    },
-    {
-      "id": "da93",
-      "items": []
-    },
-    {
-      "id": "00e0",
-      "items": []
-    },
-    {
-      "id": "df43",
+      "id": "3643",
       "items": [
         {
-          "id": 1727602083040,
-          "name": "fgfgf",
-          "quantity": "2",
-          "category": "Electronics",
-          "note": ""
+          "name": "sss",
+          "quantity": "4"
         }
-      ]
+      ],
+      "category": "groceries",
+      "optionalNote": "r",
+      "name": "meat",
+      "quantity": "2"
+    },
+    {
+      "id": "affb",
+      "items": [
+        {
+          "name": "Meat",
+          "quantity": "2"
+        },
+        {
+          "name": "Cabagge",
+          "quantity": "1"
+        }
+      ],
+      "category": "groceries",
+      "optionalNote": "Spend R200 on this"
+    },
+    {
+      "id": "1ea4",
+      "items": [
+        {
+          "name": "www",
+          "quantity": "3"
+        }
+      ],
+      "category": "electronics",
+      "optionalNote": ""
+    },
+    {
+      "id": "5435",
+      "items": [
+        {
+          "name": "ef",
+          "quantity": "44"
+        }
+      ],
+      "category": "clothing",
+      "optionalNote": "2"
     }
   ],
   "categories": [
