@@ -8,6 +8,7 @@ import AddList from './pages/AddList';
 import ViewAllLists from './pages/ViewAllLists';
 import ViewCategory from './pages/ViewCategory';
 import { AuthProvider } from './pages/AuthContext';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         {/* Main content area with flex-grow to push the footer down */}
         <main className="flex-grow container mx-auto p-4">
           <Routes>
+          <Route path="/privacy" element={<PrivacyPolicy/>} /> 
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

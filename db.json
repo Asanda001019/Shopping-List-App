@@ -27,54 +27,418 @@
       "id": "2f0c"
     },
     {
-      "id": "3643",
-      "items": [
-        {
-          "name": "sss",
-          "quantity": "4"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "r",
-      "name": "meat",
-      "quantity": "2"
+      "0": {
+        "id": "1",
+        "items": [
+          {
+            "id": "item1",
+            "name": "Apples",
+            "quantity": "4",
+            "category": "Groceries",
+            "note": "Buy organic if possible"
+          }
+        ]
+      },
+      "1": {
+        "0": {
+          "name": "Meat",
+          "quantity": "1"
+        },
+        "id": "2f0c"
+      },
+      "2": {
+        "id": "3643",
+        "items": [
+          {
+            "name": "meat",
+            "quantity": "1"
+          }
+        ],
+        "category": "groceries",
+        "optionalNote": "spend R100",
+        "name": "meat",
+        "quantity": "2"
+      },
+      "3": {
+        "id": "1ea4",
+        "items": [
+          {
+            "name": "charger",
+            "quantity": "3"
+          }
+        ],
+        "category": "electronics",
+        "optionalNote": "",
+        "name": "meat",
+        "quantity": "3"
+      },
+      "4": {
+        "id": "5435",
+        "items": [
+          {
+            "name": "vest",
+            "quantity": "4"
+          }
+        ],
+        "category": "clothing",
+        "optionalNote": "medium size",
+        "name": "Vest",
+        "quantity": "5"
+      },
+      "id": "3643"
     },
     {
-      "id": "affb",
+      "0": {
+        "id": "1",
+        "items": [
+          {
+            "id": "item1",
+            "name": "Apples",
+            "quantity": "4",
+            "category": "Groceries",
+            "note": "Buy organic if possible"
+          }
+        ]
+      },
+      "1": {
+        "0": {
+          "name": "Meat",
+          "quantity": "1"
+        },
+        "id": "2f0c"
+      },
+      "2": {
+        "id": "3643",
+        "items": [
+          {
+            "name": "meat",
+            "quantity": "1"
+          }
+        ],
+        "category": "groceries",
+        "optionalNote": "spend R100",
+        "name": "meat",
+        "quantity": "2"
+      },
+      "3": {
+        "id": "1ea4",
+        "items": [
+          {
+            "name": "charger",
+            "quantity": "3"
+          }
+        ],
+        "category": "electronics",
+        "optionalNote": "",
+        "name": "meat",
+        "quantity": "3"
+      },
+      "4": {
+        "id": "5435",
+        "items": [
+          {
+            "name": "vest",
+            "quantity": "4"
+          }
+        ],
+        "category": "clothing",
+        "optionalNote": "medium size",
+        "name": "Vest",
+        "quantity": "5"
+      },
+      "id": "1ea4"
+    },
+    {
+      "0": {
+        "id": "1",
+        "items": [
+          {
+            "id": "item1",
+            "name": "Apples",
+            "quantity": "4",
+            "category": "Groceries",
+            "note": "Buy organic if possible"
+          }
+        ]
+      },
+      "1": {
+        "0": {
+          "name": "Meat",
+          "quantity": "1"
+        },
+        "id": "2f0c"
+      },
+      "2": {
+        "id": "3643",
+        "items": [
+          {
+            "name": "sss",
+            "quantity": "4"
+          }
+        ],
+        "category": "groceries",
+        "optionalNote": "spend R100",
+        "name": "meat",
+        "quantity": "2"
+      },
+      "3": {
+        "id": "1ea4",
+        "items": [
+          {
+            "name": "www",
+            "quantity": "3"
+          }
+        ],
+        "category": "electronics",
+        "optionalNote": "",
+        "name": "meat",
+        "quantity": "3"
+      },
+      "4": {
+        "id": "5435",
+        "items": [
+          {
+            "name": "vest",
+            "quantity": "4"
+          }
+        ],
+        "category": "clothing",
+        "optionalNote": "medium size",
+        "name": "Vest",
+        "quantity": "5"
+      },
+      "id": "5435"
+    },
+    {
+      "0": {
+        "id": "1",
+        "items": [
+          {
+            "id": "item1",
+            "name": "Apples",
+            "quantity": "4",
+            "category": "Groceries",
+            "note": "Buy organic if possible"
+          }
+        ]
+      },
+      "1": {
+        "0": {
+          "name": "Meat",
+          "quantity": "1"
+        },
+        "id": "2f0c"
+      },
+      "2": {
+        "0": {
+          "id": "1",
+          "items": [
+            {
+              "id": "item1",
+              "name": "Apples",
+              "quantity": "4",
+              "category": "Groceries",
+              "note": "Buy organic if possible"
+            }
+          ]
+        },
+        "1": {
+          "0": {
+            "name": "Meat",
+            "quantity": "1"
+          },
+          "id": "2f0c"
+        },
+        "2": {
+          "id": "3643",
+          "items": [
+            {
+              "name": "meat",
+              "quantity": "1"
+            }
+          ],
+          "category": "groceries",
+          "optionalNote": "spend R100",
+          "name": "meat",
+          "quantity": "2"
+        },
+        "3": {
+          "id": "1ea4",
+          "items": [
+            {
+              "name": "charger",
+              "quantity": "3"
+            }
+          ],
+          "category": "electronics",
+          "optionalNote": "",
+          "name": "meat",
+          "quantity": "3"
+        },
+        "4": {
+          "id": "5435",
+          "items": [
+            {
+              "name": "vest",
+              "quantity": "4"
+            }
+          ],
+          "category": "clothing",
+          "optionalNote": "medium size",
+          "name": "Vest",
+          "quantity": "5"
+        },
+        "id": "3643"
+      },
+      "3": {
+        "0": {
+          "id": "1",
+          "items": [
+            {
+              "id": "item1",
+              "name": "Apples",
+              "quantity": "4",
+              "category": "Groceries",
+              "note": "Buy organic if possible"
+            }
+          ]
+        },
+        "1": {
+          "0": {
+            "name": "Meat",
+            "quantity": "1"
+          },
+          "id": "2f0c"
+        },
+        "2": {
+          "id": "3643",
+          "items": [
+            {
+              "name": "meat",
+              "quantity": "1"
+            }
+          ],
+          "category": "groceries",
+          "optionalNote": "spend R100",
+          "name": "meat",
+          "quantity": "2"
+        },
+        "3": {
+          "id": "1ea4",
+          "items": [
+            {
+              "name": "charger",
+              "quantity": "3"
+            }
+          ],
+          "category": "electronics",
+          "optionalNote": "",
+          "name": "meat",
+          "quantity": "3"
+        },
+        "4": {
+          "id": "5435",
+          "items": [
+            {
+              "name": "vest",
+              "quantity": "4"
+            }
+          ],
+          "category": "clothing",
+          "optionalNote": "medium size",
+          "name": "Vest",
+          "quantity": "5"
+        },
+        "id": "1ea4"
+      },
+      "4": {
+        "0": {
+          "id": "1",
+          "items": [
+            {
+              "id": "item1",
+              "name": "Apples",
+              "quantity": "4",
+              "category": "Groceries",
+              "note": "Buy organic if possible"
+            }
+          ]
+        },
+        "1": {
+          "0": {
+            "name": "Meat",
+            "quantity": "1"
+          },
+          "id": "2f0c"
+        },
+        "2": {
+          "id": "3643",
+          "items": [
+            {
+              "name": "sss",
+              "quantity": "4"
+            }
+          ],
+          "category": "groceries",
+          "optionalNote": "spend R100",
+          "name": "meat",
+          "quantity": "2"
+        },
+        "3": {
+          "id": "1ea4",
+          "items": [
+            {
+              "name": "www",
+              "quantity": "3"
+            }
+          ],
+          "category": "electronics",
+          "optionalNote": "",
+          "name": "meat",
+          "quantity": "3"
+        },
+        "4": {
+          "id": "5435",
+          "items": [
+            {
+              "name": "vest",
+              "quantity": "4"
+            }
+          ],
+          "category": "clothing",
+          "optionalNote": "medium size",
+          "name": "Vest",
+          "quantity": "5"
+        },
+        "id": "5435"
+      },
+      "5": {
+        "id": "4c3e",
+        "items": [
+          {
+            "name": "Onion",
+            "quantity": "1"
+          },
+          {
+            "name": "Onion",
+            "quantity": "1"
+          }
+        ],
+        "category": "groceries",
+        "optionalNote": "Spend R200"
+      },
+      "id": "4c3e"
+    },
+    {
+      "id": "59dd",
       "items": [
         {
           "name": "Meat",
-          "quantity": "2"
-        },
-        {
-          "name": "Cabagge",
           "quantity": "1"
         }
       ],
       "category": "groceries",
-      "optionalNote": "Spend R200 on this"
-    },
-    {
-      "id": "1ea4",
-      "items": [
-        {
-          "name": "www",
-          "quantity": "3"
-        }
-      ],
-      "category": "electronics",
-      "optionalNote": ""
-    },
-    {
-      "id": "5435",
-      "items": [
-        {
-          "name": "ef",
-          "quantity": "44"
-        }
-      ],
-      "category": "clothing",
-      "optionalNote": "2"
+      "optionalNote": "Chicken only"
     }
   ],
   "categories": [
