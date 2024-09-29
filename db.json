@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": "15d8",
+      "email": "Portiaa949@gmail.com",
+      "password": "Asanda@123"
+    }
+  ],
+  "lists": [
+    {
+      "id": "945a",
+      "items": [
+        {
+          "id": 1727600796702,
+          "name": "ryhg",
+          "quantity": "2",
+          "category": "Electronics",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "a843",
+      "items": []
+    },
+    {
+      "id": "a5f3",
+      "items": []
+    },
+    {
+      "id": "30f7",
+      "items": []
+    },
+    {
+      "id": "da93",
+      "items": []
+    },
+    {
+      "id": "00e0",
+      "items": []
+    },
+    {
+      "id": "df43",
+      "items": [
+        {
+          "id": 1727602083040,
+          "name": "fgfgf",
+          "quantity": "2",
+          "category": "Electronics",
+          "note": ""
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Groceries"
+    },
+    {
+      "id": "2",
+      "name": "Electronics"
+    },
+    {
+      "id": "3",
+      "name": "Clothing"
+    }
+  ]
+}
