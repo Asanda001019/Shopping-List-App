@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faLaptop, faTshirt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faLaptop, faTshirt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLists, deleteList, updateList } from '../features/listSlice'; 
+import jsPDF from 'jspdf'; // Import jsPDF
 
 const categoryIcons = {
   groceries: faShoppingCart,
@@ -38,8 +39,6 @@ const ViewAllList = () => {
   const handleEdit = async (e) => {
     e.preventDefault();
     if (!editItem) return;
-
-    
     dispatch(updateList(editItem));
     closeEditModal();
   };
@@ -47,6 +46,27 @@ const ViewAllList = () => {
   const filteredItems = items.filter((item) =>
     item.category && item.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const generatePDF = (list) => {
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.text("List of Items", 20, 20);
+    doc.setFontSize(12);
+    
+    let y = 30; // Start y position for item listing
+    doc.setFontSize(14);
+    doc.text(`Category: ${list.category.charAt(0).toUpperCase() + list.category.slice(1)}`, 20, y);
+    y += 10;
+
+    list.items.forEach((item) => {
+      doc.setFontSize(12);
+      doc.text(`Item Name: ${item.name}, Quantity: ${item.quantity}`, 20, y);
+      y += 8;
+    });
+
+    doc.text(`Optional Note: ${list.optionalNote}`, 20, y);
+    doc.save(`${list.category}.pdf`); // Save as category name
+  };
 
   if (!items.length) {
     return <div>Loading...</div>;
@@ -77,6 +97,15 @@ const ViewAllList = () => {
                 <p>Quantity: {item.quantity}</p>
               </div>
             ))}
+
+            {/* Share icon that generates a PDF when clicked */}
+            <button 
+              onClick={() => generatePDF(list)} 
+              className="mt-2 text-blue-500 hover:underline flex items-center"
+            >
+              <FontAwesomeIcon icon={faShareAlt} className="mr-2" />
+              Share List
+            </button>
 
             <button
               onClick={() => openEditModal(list)}

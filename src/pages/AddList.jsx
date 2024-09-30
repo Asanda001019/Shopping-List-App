@@ -62,7 +62,12 @@ const AddList = () => {
       setItems([{ name: '', quantity: '' }]);
       setCategory('');
       setOptionalNote('');
-      navigate('/all'); // Redirect after successful submission
+
+      // Show alert before navigating
+      window.alert('Your list has been successfully submitted!');
+
+      // Redirect after successful submission
+      navigate('/all'); 
     } catch (error) {
       setError('Error: ' + error.message);
     } finally {

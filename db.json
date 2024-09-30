@@ -494,19 +494,26 @@
       "optionalNote": "bnb"
     },
     {
-      "id": "24cf",
+      "id": "f9c4",
       "items": [
         {
-          "name": "qwe",
+          "name": "eee",
           "quantity": "3"
-        },
-        {
-          "name": "rtr",
-          "quantity": "4"
         }
       ],
       "category": "groceries",
-      "optionalNote": ""
+      "optionalNote": "fd"
+    },
+    {
+      "id": "b7c9",
+      "items": [
+        {
+          "name": "wee",
+          "quantity": "3"
+        }
+      ],
+      "category": "electronics",
+      "optionalNote": "ss"
     }
   ],
   "categories": [

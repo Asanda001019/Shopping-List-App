@@ -9,6 +9,7 @@ import ViewAllLists from './pages/ViewAllLists';
 // import ViewCategory from './pages/ViewCategory';
 import { AuthProvider } from './pages/AuthContext';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import NoPage from './components/NoPage';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/add" element={<AddList />} />
             <Route path="/all" element={<ViewAllLists />} />
             {/* <Route path="/category/:category" element={<ViewCategory />} /> */}
+            <Route path="*" element={<NoPage />} />
           </Routes>
         </main>
 
