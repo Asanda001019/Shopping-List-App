@@ -2,12 +2,10 @@ const Navigation = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <ul className="flex justify-between items-center">
-        {/* Left-aligned links */}
         <li className="mr-auto">
           <a href="/" className="text-white">Home</a>
         </li>
 
-        {/* Right-aligned links */}
         <div className="flex space-x-4">
           <li><a href="/login" className="text-white">Login</a></li>
           <li><a href="/register" className="text-white">Register</a></li>

@@ -473,26 +473,15 @@
       "optionalNote": "Extra large size"
     },
     {
-      "id": "24c4",
+      "id": "fd1d",
       "items": [
         {
-          "name": "DF",
-          "quantity": "3"
+          "name": "ERT",
+          "quantity": "5"
         }
       ],
       "category": "groceries",
-      "optionalNote": "22"
-    },
-    {
-      "id": "b7a9",
-      "items": [
-        {
-          "name": "ASANDA",
-          "quantity": "2"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "QWER"
+      "optionalNote": "FFF"
     }
   ],
   "categories": [

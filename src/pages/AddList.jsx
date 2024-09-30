@@ -1,7 +1,6 @@
-// src/AddList.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addList } from '../features/listSlice'; // Adjust the import based on your file structure
+import { addList } from '../features/listSlice'; 
 import { useNavigate } from 'react-router-dom';
 
 const AddList = () => {
@@ -63,7 +62,7 @@ const AddList = () => {
       setItems([{ name: '', quantity: '' }]);
       setCategory('');
       setOptionalNote('');
-      navigate('/view-lists'); // Redirect after successful submission
+      navigate('/all'); // Redirect after successful submission
     } catch (error) {
       setError('Error: ' + error.message);
     } finally {

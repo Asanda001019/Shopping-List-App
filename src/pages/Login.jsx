@@ -1,11 +1,10 @@
-// src/LoginForm.js
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'; // Import useDispatch
-import { loginUser } from '../features/loginSlice'; // Import the loginUser action
+import { useDispatch } from 'react-redux'; 
+import { loginUser } from '../features/loginSlice'; 
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginForm = () => {
-  const dispatch = useDispatch(); // Create a dispatch function
+  const dispatch = useDispatch(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

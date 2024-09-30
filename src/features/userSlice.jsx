@@ -1,4 +1,3 @@
-// src/features/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {

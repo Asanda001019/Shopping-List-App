@@ -40,7 +40,7 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      state.currentUser = null; // Clear current user on logout
+      state.currentUser = null; 
     },
   },
   extraReducers: (builder) => {
@@ -50,7 +50,7 @@ const loginSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.users.push(action.payload); // Add the new user to the users array
+        state.users.push(action.payload); 
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.status = 'failed';

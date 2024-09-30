@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faLaptop, faTshirt } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLists, deleteList, updateList } from '../features/listSlice'; 
 
 const categoryIcons = {
   groceries: faShoppingCart,
@@ -9,32 +11,22 @@ const categoryIcons = {
 };
 
 const ViewAllList = () => {
-  const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.lists.lists); 
   const [editItem, setEditItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    dispatch(fetchLists()); 
+  }, [dispatch]);
 
-  const fetchItems = async () => {
-    const response = await fetch('http://localhost:5000/lists');
-    const data = await response.json();
-    console.log(data); // Log the fetched data
-    setItems(data); // Ensure you are setting the correct data structure
-  };
-
-  const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/lists/${id}`, {
-      method: 'DELETE',
-    });
-    fetchItems();
+  const handleDelete = (id) => {
+    dispatch(deleteList(id)); 
   };
 
   const openEditModal = (list) => {
-    const itemToEdit = list.items[0]; // Adjust this if you want to edit a specific item
-    setEditItem({ ...itemToEdit, id: list.id, itemId: itemToEdit.id }); // Add itemId for reference
+    setEditItem({ ...list }); 
     setModalOpen(true);
   };
 
@@ -45,32 +37,10 @@ const ViewAllList = () => {
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    if (!editItem) return;
 
-    // Update the items in the correct list
-    const updatedLists = items.map((list) => {
-      if (list.id === editItem.id) {
-        return {
-          ...list,
-          items: list.items.map((item) =>
-            item.id === editItem.itemId
-              ? { ...item, name: editItem.name, quantity: editItem.quantity }
-              : item
-          ),
-        };
-      }
-      return list;
-    });
-
-    // Update the items on the server
-    await fetch(`http://localhost:5000/lists/${editItem.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedLists),
-    });
-
-    setItems(updatedLists); // Update local state
+    
+    dispatch(updateList(editItem));
     closeEditModal();
   };
 
@@ -101,15 +71,12 @@ const ViewAllList = () => {
             </h3>
             <p>Optional Note: {list.optionalNote}</p>
 
-            {/* Loop through the items in each list */}
-            {list.items &&
-              list.items.map((item) => (
-                <div key={item.id} className="mt-2">
-                  {/* Use item.id for unique key */}
-                  <p>Item Name: {item.name}</p>
-                  <p>Quantity: {item.quantity}</p>
-                </div>
-              ))}
+            {list.items && list.items.map((item) => (
+              <div key={item.id} className="mt-2">
+                <p>Item Name: {item.name}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+            ))}
 
             <button
               onClick={() => openEditModal(list)}

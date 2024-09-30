@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
   const navigate = useNavigate();
 
   const handleBackToHome = () => {
-    navigate('/'); // Navigate to the home page
+    navigate('/');
   };
   return (
     <div className="max-w-2xl mx-auto p-6">

@@ -9,10 +9,10 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const user = useSelector((state) => state.login.user); // Access user from Redux store
+  const user = useSelector((state) => state.login.user); 
 
   const login = (userData) => {
-    // Handle login logic if needed
+    
   };
 
   return (
