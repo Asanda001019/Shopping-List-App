@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { useDispatch } from 'react-redux'; // Import useDispatch
-import { registerUser } from '../features/userSlice'; // Import the registerUser action
+import { useNavigate, Link } from 'react-router-dom'; 
+import { useDispatch } from 'react-redux'; 
+import { registerUser } from '../features/userSlice';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Create a dispatch function
+  const dispatch = useDispatch(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = { email, password };
 
     try {
-      await dispatch(registerUser(newUser)).unwrap(); // Dispatch the action and wait for it to complete
-      navigate('/login'); // Redirect to login page after successful registration
+      await dispatch(registerUser(newUser)).unwrap(); 
+      
+      // Show alert upon successful registration
+      window.alert('Registration successful! Please log in.');
+
+      // Redirect to login page after successful registration
+      navigate('/login'); 
     } catch (error) {
-      console.error('Failed to register:', error); // Log error if registration fails
+      console.error('Failed to register:', error); 
+      window.alert('Registration failed. Please try again.'); 
     }
   };
 
@@ -54,7 +59,10 @@ const RegisterForm = () => {
         </button>
       </form>
       <div className="mt-4 text-center">
-        <p className="text-gray-600">Already have an account? <Link to="/login" className="text-blue-500 hover:underline">Login here</Link>.</p>
+        <p className="text-gray-600">
+          Already have an account? 
+          <Link to="/login" className="text-blue-500 hover:underline"> Login here</Link>.
+        </p>
       </div>
     </div>
   );

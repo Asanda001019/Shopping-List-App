@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const foundUser = await dispatch(loginUser({ email, password })).unwrap(); // Dispatch the action
+      const foundUser = await dispatch(loginUser({ email, password })).unwrap(); 
       // If successful, navigate to the add list page
       navigate('/add');
     } catch (error) {
