@@ -4,6 +4,16 @@
       "id": "1",
       "email": "user@example.com",
       "password": "password123"
+    },
+    {
+      "id": "b1d3",
+      "email": "Samkelo@gmail.com",
+      "password": "Samkelo@1234"
+    },
+    {
+      "id": "eed3",
+      "email": "Samkelo@gmail.com",
+      "password": "Samkelo@1234"
     }
   ],
   "lists": [
@@ -439,6 +449,28 @@
       ],
       "category": "groceries",
       "optionalNote": "Chicken only"
+    },
+    {
+      "id": "da74",
+      "items": [
+        {
+          "name": "Charger",
+          "quantity": "1"
+        }
+      ],
+      "category": "electronics",
+      "optionalNote": "Type c"
+    },
+    {
+      "id": "35b1",
+      "items": [
+        {
+          "name": "Jacket",
+          "quantity": "1"
+        }
+      ],
+      "category": "clothing",
+      "optionalNote": "Extra large size"
     }
   ],
   "categories": [

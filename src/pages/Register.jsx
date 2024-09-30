@@ -2,25 +2,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { registerUser } from '../features/userSlice'; // Import the registerUser action
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Create a dispatch function
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = { email, password };
 
-    await fetch('http://localhost:5000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUser),
-    });
-
-    navigate('/login'); // Redirect to login page after registration
+    try {
+      await dispatch(registerUser(newUser)).unwrap(); // Dispatch the action and wait for it to complete
+      navigate('/login'); // Redirect to login page after successful registration
+    } catch (error) {
+      console.error('Failed to register:', error); // Log error if registration fails
+    }
   };
 
   return (

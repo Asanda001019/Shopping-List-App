@@ -19,7 +19,7 @@ const ViewAllList = () => {
   }, []);
 
   const fetchItems = async () => {
-    const response = await fetch('http://localhost:5000/lists'); // Adjusted API endpoint
+    const response = await fetch('http://localhost:5000/lists');
     const data = await response.json();
     console.log(data); // Log the fetched data
     setItems(data); // Ensure you are setting the correct data structure
@@ -52,7 +52,9 @@ const ViewAllList = () => {
         return {
           ...list,
           items: list.items.map((item) =>
-            item.id === editItem.itemId ? { ...item, name: editItem.name, quantity: editItem.quantity } : item
+            item.id === editItem.itemId
+              ? { ...item, name: editItem.name, quantity: editItem.quantity }
+              : item
           ),
         };
       }
@@ -72,7 +74,7 @@ const ViewAllList = () => {
     closeEditModal();
   };
 
-  const filteredItems = items.filter(item =>
+  const filteredItems = items.filter((item) =>
     item.category && item.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -91,24 +93,36 @@ const ViewAllList = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredItems.map(list => (
-          <div key={list.id} className={`shadow-lg rounded-lg p-4 bg-white`}>
+        {filteredItems.map((list) => (
+          <div key={list.id} className="shadow-lg rounded-lg p-4 bg-white">
             <h3 className="font-bold text-lg flex items-center">
               <FontAwesomeIcon icon={categoryIcons[list.category]} className="mr-2" />
               Category: {list.category.charAt(0).toUpperCase() + list.category.slice(1)}
             </h3>
             <p>Optional Note: {list.optionalNote}</p>
-            
-            {/* Loop through the items in each list */}
-            {list.items && list.items.map((item) => (
-              <div key={item.id} className="mt-2"> {/* Use item.id for unique key */}
-                <p>Item Name: {item.name}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-            ))}
 
-            <button onClick={() => openEditModal(list)} className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded">Edit</button>
-            <button onClick={() => handleDelete(list.id)} className="mt-2 ml-2 bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+            {/* Loop through the items in each list */}
+            {list.items &&
+              list.items.map((item) => (
+                <div key={item.id} className="mt-2">
+                  {/* Use item.id for unique key */}
+                  <p>Item Name: {item.name}</p>
+                  <p>Quantity: {item.quantity}</p>
+                </div>
+              ))}
+
+            <button
+              onClick={() => openEditModal(list)}
+              className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDelete(list.id)}
+              className="mt-2 ml-2 bg-red-500 text-white px-4 py-2 rounded"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
@@ -156,8 +170,16 @@ const ViewAllList = () => {
                   onChange={(e) => setEditItem({ ...editItem, optionalNote: e.target.value })}
                 />
               </div>
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save Changes</button>
-              <button type="button" onClick={closeEditModal} className="ml-2 bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                Save Changes
+              </button>
+              <button
+                type="button"
+                onClick={closeEditModal}
+                className="ml-2 bg-gray-500 text-white px-4 py-2 rounded"
+              >
+                Cancel
+              </button>
             </form>
           </div>
         </div>

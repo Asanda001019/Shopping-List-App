@@ -1,25 +1,24 @@
 // src/LoginForm.js
 import React, { useState } from 'react';
-import { useAuth } from "../pages/AuthContext";
-import { useNavigate, Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { loginUser } from '../features/loginSlice'; // Import the loginUser action
+import { useNavigate, Link } from 'react-router-dom';
 
 const LoginForm = () => {
-  const { login } = useAuth();
+  const dispatch = useDispatch(); // Create a dispatch function
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/users');
-    const users = await response.json();
-    const foundUser = users.find(user => user.email === email && user.password === password);
 
-    if (foundUser) {
-      login(foundUser);
-      navigate('/add'); // Redirect to recipes page
-    } else {
-      alert('Invalid credentials');
+    try {
+      const foundUser = await dispatch(loginUser({ email, password })).unwrap(); // Dispatch the action
+      // If successful, navigate to the add list page
+      navigate('/add');
+    } catch (error) {
+      alert(error); // Show an alert if login fails
     }
   };
 
