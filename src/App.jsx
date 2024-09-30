@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AddList from './pages/AddList';
 import ViewAllLists from './pages/ViewAllLists';
-import ViewCategory from './pages/ViewCategory';
+// import ViewCategory from './pages/ViewCategory';
 import { AuthProvider } from './pages/AuthContext';
 import PrivacyPolicy from './components/PrivacyPolicy';
 
@@ -28,7 +28,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/add" element={<AddList />} />
             <Route path="/all" element={<ViewAllLists />} />
-            <Route path="/category/:category" element={<ViewCategory />} />
+            {/* <Route path="/category/:category" element={<ViewCategory />} /> */}
           </Routes>
         </main>
 

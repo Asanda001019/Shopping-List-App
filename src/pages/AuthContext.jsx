@@ -1,5 +1,6 @@
 // src/AuthContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 const AuthContext = createContext();
 
@@ -8,18 +9,14 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.login.user); // Access user from Redux store
 
   const login = (userData) => {
-    setUser(userData);
-  };
-
-  const logout = () => {
-    setUser(null);
+    // Handle login logic if needed
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login }}>
       {children}
     </AuthContext.Provider>
   );

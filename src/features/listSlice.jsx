@@ -1,31 +1,41 @@
+// // src/features/listSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   lists: [],
   status: 'idle',
+  error: null,
 };
 
-export const fetchLists = createAsyncThunk('lists/fetchLists', async () => {
-  const response = await fetch('http://localhost:5000/lists');
-  return response.json();
+// Async thunk for adding a new list
+export const addList = createAsyncThunk('lists/addList', async (newList) => {
+  const response = await fetch('http://localhost:5000/lists', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newList),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add list');
+  }
+
+  return response.json(); // Return the added list
 });
 
-const listsSlice = createSlice({
+const listSlice = createSlice({
   name: 'lists',
   initialState,
   reducers: {
-    addList: (state, action) => {
-      state.lists.push(action.payload);
-    },
-    // other reducers can be added here
+    // You can add additional reducers here if needed
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchLists.fulfilled, (state, action) => {
-        state.lists = action.payload;
+      .addCase(addList.fulfilled, (state, action) => {
+        state.lists.push(action.payload); // Add the new list to the state
       });
   },
 });
 
-export const { addList } = listsSlice.actions;
-export default listsSlice.reducer;
+export default listSlice.reducer;
