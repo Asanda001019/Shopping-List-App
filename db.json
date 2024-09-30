@@ -14,6 +14,11 @@
       "id": "eed3",
       "email": "Samkelo@gmail.com",
       "password": "Samkelo@1234"
+    },
+    {
+      "id": "ce8a",
+      "email": "Asanda@gmail.com",
+      "password": "Asanda@123"
     }
   ],
   "lists": [
@@ -481,7 +486,7 @@
         }
       ],
       "category": "groceries",
-      "optionalNote": "FFF"
+      "optionalNote": "bnb"
     }
   ],
   "categories": [
