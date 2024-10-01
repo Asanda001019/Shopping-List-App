@@ -18,7 +18,12 @@ const LoginForm = () => {
       const foundUser = await dispatch(loginUser({ email, password })).unwrap(); 
       navigate('/add'); // Navigate to add list page if login is successful
     } catch (error) {
-      alert(error); // Show an alert if login fails
+      // Check if the error corresponds to invalid credentials
+      if (error.message.includes("Invalid credentials")) {
+        alert("Invalid credentials. Please try again."); // Show alert for invalid login details
+      } else {
+        alert("Login failed. Please try again."); // General error alert
+      }
     }
   };
 

@@ -1,9 +1,17 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
+
 const Navigation = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <ul className="flex justify-between items-center">
+      
         <li className="mr-auto">
-          <a href="/" className="text-white">Home</a>
+          <a href="/" className="text-white flex items-center">
+            <FontAwesomeIcon icon={faShoppingCart} className="mr-2" /> 
+            Home
+          </a>
         </li>
 
         <div className="flex space-x-4">

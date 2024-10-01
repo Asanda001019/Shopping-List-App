@@ -34,6 +34,11 @@
       "id": "d091",
       "email": "Samkelo@gmail.com",
       "password": "Samkelo@1234"
+    },
+    {
+      "id": "0e08",
+      "email": "Samkelo@gmail.com",
+      "password": "Samkelo@1234"
     }
   ],
   "lists": [
@@ -524,17 +529,6 @@
       ],
       "category": "clothing",
       "optionalNote": "ss"
-    },
-    {
-      "id": "db12",
-      "items": [
-        {
-          "name": "sss",
-          "quantity": "3"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "sss"
     }
   ],
   "categories": [

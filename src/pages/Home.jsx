@@ -1,16 +1,16 @@
 import React from 'react';
-import backgroundImage from '../assets/shoppingListBg.jpg'; // Import the background image
+import backgroundImage from '../assets/shoppingListBg.jpg'; 
 
 const Home = () => {
   return (
     <section
       // style={{
-      //   backgroundImage: `url(${backgroundImage})`,  // Use the imported image
-      //   backgroundSize: 'cover',                    // Ensure the image covers the area
-      //   backgroundRepeat: 'no-repeat',              // Prevent image repetition
-      //   height: '100vh',                            // Full height background
+      //   backgroundImage: `url(${backgroundImage})`,  
+      //   backgroundSize: 'cover',                    
+      //   backgroundRepeat: 'no-repeat',              
+      //   height: '100vh',                            
       // }}
-      className="flex justify-center items-center h-80vh"  // Full-screen height with centered content
+      className="flex justify-center items-center " 
     >
       <div className="flex flex-col items-center justify-center bg-gray-800 bg-opacity-80 p-6 rounded-md shadow-lg">
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-4">
