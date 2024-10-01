@@ -1,6 +1,6 @@
 <img src="https://socialify.git.ci/Asanda001019/Shopping-List-App/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="Shopping-List-App" width="640" height="320" />
-<h1>Weather Application Task8</h1>
-<p>Using Api to fetch weather data for various locations </p>
+<h1>Shopping List Application</h1>
+<p>Using Redux toolkit </p>
 
 ## Run Locally
 Clone the project
