@@ -11,21 +11,22 @@ const ListDetail = () => {
   const [editList, setEditList] = useState(list);
   const [newItemName, setNewItemName] = useState('');
   const [newItemQuantity, setNewItemQuantity] = useState('');
+  const [editingIndex, setEditingIndex] = useState(null);
 
   useEffect(() => {
-    if (!list) dispatch(fetchLists()); // Fetch lists if not loaded
-    else setEditList(list); // Initialize editList state with the list data
+    if (!list) dispatch(fetchLists());
+    else setEditList(list);
   }, [dispatch, list]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(updateList(editList));
-    navigate('/viewAllList'); // Navigate back to view all lists
+    navigate('/all');
   };
 
   const handleDelete = () => {
     dispatch(deleteList(id));
-    navigate('/viewAllList');
+    navigate('/all');
   };
 
   const handleAddItem = (e) => {
@@ -37,10 +38,14 @@ const ListDetail = () => {
     setNewItemQuantity('');
   };
 
-  const handleEditItem = (index, name, quantity) => {
+  const handleEditItem = (index) => {
+    setEditingIndex(index);
+  };
+
+  const handleSaveItem = (index) => {
     const updatedItems = [...editList.items];
-    updatedItems[index] = { name, quantity };
     setEditList({ ...editList, items: updatedItems });
+    setEditingIndex(null);
   };
 
   const handleDeleteItem = (index) => {
@@ -51,62 +56,22 @@ const ListDetail = () => {
   if (!editList) return <div>Loading...</div>;
 
   return (
-    <div className="max-w-lg mx-auto p-6">
+    <div className="max-w-lg mx-auto p-6 space-y-6">
       <h2 className="text-2xl font-bold mb-4">List Details</h2>
-      <form onSubmit={handleUpdate}>
-        <div className="mb-4">
-          <label className="block">Category:</label>
-          <input
-            type="text"
-            value={editList.category}
-            onChange={(e) => setEditList({ ...editList, category: e.target.value })}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
 
-        <h3 className="text-lg font-bold mb-2">Items:</h3>
-        <table className="min-w-full border-collapse border border-gray-300 mb-4">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Item Name</th>
-              <th className="border border-gray-300 px-4 py-2">Quantity</th>
-              <th className="border border-gray-300 px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {editList.items.map((item, index) => (
-              <tr key={index}>
-                <td className="border border-gray-300 px-4 py-2">
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) => handleEditItem(index, e.target.value, item.quantity)}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => handleEditItem(index, item.name, e.target.value)}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteItem(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mb-4">
+        <label className="block font-semibold">Category:</label>
+        <input
+          type="text"
+          value={editList.category}
+          onChange={(e) => setEditList({ ...editList, category: e.target.value })}
+          className="mt-1 block w-full p-2 border border-gray-300 rounded"
+        />
+      </div>
 
-        <h3 className="text-lg font-bold mb-2">Add New Item:</h3>
+      {/* Add New Item Card */}
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+        <h3 className="text-lg font-bold mb-2">Add New Item</h3>
         <div className="mb-4">
           <input
             type="text"
@@ -128,21 +93,100 @@ const ListDetail = () => {
         <button
           type="button"
           onClick={handleAddItem}
-          className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
         >
           Add Item
         </button>
+      </div>
 
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          Save Changes
-        </button>
-        <button
-          type="button"
-          onClick={handleDelete}
-          className="ml-2 bg-red-500 text-white px-4 py-2 rounded"
-        >
-          Delete List
-        </button>
+      <form onSubmit={handleUpdate}>
+        <h3 className="text-lg font-bold mb-2">Items:</h3>
+        <table className="min-w-full border-collapse border border-gray-300 mb-4">
+          <thead>
+            <tr>
+              <th className="border border-gray-300 px-4 py-2">Item Name</th>
+              <th className="border border-gray-300 px-4 py-2">Quantity</th>
+              <th className="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {editList.items.map((item, index) => (
+              <tr key={index}>
+                <td className="border border-gray-300 px-4 py-2">
+                  {editingIndex === index ? (
+                    <input
+                      type="text"
+                      value={item.name}
+                      onChange={(e) => {
+                        const updatedItems = [...editList.items];
+                        updatedItems[index].name = e.target.value;
+                        setEditList({ ...editList, items: updatedItems });
+                      }}
+                      className="w-full border border-gray-300 rounded p-1"
+                    />
+                  ) : (
+                    item.name
+                  )}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {editingIndex === index ? (
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) => {
+                        const updatedItems = [...editList.items];
+                        updatedItems[index].quantity = e.target.value;
+                        setEditList({ ...editList, items: updatedItems });
+                      }}
+                      className="w-full border border-gray-300 rounded p-1"
+                    />
+                  ) : (
+                    item.quantity
+                  )}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {editingIndex === index ? (
+                    <button
+                      type="button"
+                      onClick={() => handleSaveItem(index)}
+                      className="bg-green-500 text-white px-2 py-1 rounded mr-2"
+                    >
+                      Save
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => handleEditItem(index)}
+                      className="bg-yellow-500 text-white px-2 py-1 rounded mr-2"
+                    >
+                      Edit
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteItem(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+            Save Changes
+          </button>
+          <button
+            type="button"
+            onClick={handleDelete}
+            className="ml-2 bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Delete List
+          </button>
+        </div>
       </form>
     </div>
   );

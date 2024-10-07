@@ -504,6 +504,10 @@
         {
           "name": "Earphones",
           "quantity": "1"
+        },
+        {
+          "name": "Adapter",
+          "quantity": "1"
         }
       ],
       "category": "electronics",
