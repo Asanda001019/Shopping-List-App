@@ -499,15 +499,7 @@
       "items": [
         {
           "name": "charger",
-          "quantity": "1"
-        },
-        {
-          "name": "Earphones",
-          "quantity": "1"
-        },
-        {
-          "name": "Adapter",
-          "quantity": "1"
+          "quantity": "2"
         }
       ],
       "category": "electronics",
@@ -534,6 +526,22 @@
       ],
       "category": "clothing",
       "optionalNote": "asanda"
+    },
+    {
+      "id": "d016",
+      "category": "groceries",
+      "optionalNote": "Asanda Madondo"
+    },
+    {
+      "id": "0c86",
+      "items": [
+        {
+          "name": "www",
+          "quantity": "2"
+        }
+      ],
+      "category": "groceries",
+      "optionalNote": "asa"
     }
   ],
   "categories": [

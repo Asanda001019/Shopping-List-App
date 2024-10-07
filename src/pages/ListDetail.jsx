@@ -44,6 +44,7 @@ const ListDetail = () => {
 
   const handleSaveItem = (index) => {
     const updatedItems = [...editList.items];
+    updatedItems[index] = { ...updatedItems[index] }; // Clone item
     setEditList({ ...editList, items: updatedItems });
     setEditingIndex(null);
   };
@@ -119,7 +120,7 @@ const ListDetail = () => {
                       value={item.name}
                       onChange={(e) => {
                         const updatedItems = [...editList.items];
-                        updatedItems[index].name = e.target.value;
+                        updatedItems[index] = { ...updatedItems[index], name: e.target.value };
                         setEditList({ ...editList, items: updatedItems });
                       }}
                       className="w-full border border-gray-300 rounded p-1"
@@ -135,7 +136,7 @@ const ListDetail = () => {
                       value={item.quantity}
                       onChange={(e) => {
                         const updatedItems = [...editList.items];
-                        updatedItems[index].quantity = e.target.value;
+                        updatedItems[index] = { ...updatedItems[index], quantity: e.target.value };
                         setEditList({ ...editList, items: updatedItems });
                       }}
                       className="w-full border border-gray-300 rounded p-1"
