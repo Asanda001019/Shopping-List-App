@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faLaptop, faTshirt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLists, deleteList, updateList } from '../features/listSlice'; 
-import jsPDF from 'jspdf'; // Import jsPDF
+import { fetchLists, deleteList } from '../features/listSlice';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const categoryIcons = {
   groceries: faShoppingCart,
@@ -13,60 +13,20 @@ const categoryIcons = {
 
 const ViewAllList = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.lists.lists); 
-  const [editItem, setEditItem] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const items = useSelector((state) => state.lists.lists);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    dispatch(fetchLists()); 
+    dispatch(fetchLists());
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    dispatch(deleteList(id)); 
-  };
-
-  const openEditModal = (list) => {
-    setEditItem({ ...list }); 
-    setModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setEditItem(null);
-    setModalOpen(false);
-  };
-
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    if (!editItem) return;
-    dispatch(updateList(editItem));
-    closeEditModal();
+    dispatch(deleteList(id));
   };
 
   const filteredItems = items.filter((item) =>
     item.category && item.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const generatePDF = (list) => {
-    const doc = new jsPDF();
-    doc.setFontSize(20);
-    doc.text("List of Items", 20, 20);
-    doc.setFontSize(12);
-    
-    let y = 30; // Start y position for item listing
-    doc.setFontSize(14);
-    doc.text(`Category: ${list.category.charAt(0).toUpperCase() + list.category.slice(1)}`, 20, y);
-    y += 10;
-
-    list.items.forEach((item) => {
-      doc.setFontSize(12);
-      doc.text(`Item Name: ${item.name}, Quantity: ${item.quantity}`, 20, y);
-      y += 8;
-    });
-
-    doc.text(`Optional Note: ${list.optionalNote}`, 20, y);
-    doc.save(`${list.category}.pdf`); // Save as category name
-  };
 
   if (!items.length) {
     return <div>Loading...</div>;
@@ -74,10 +34,10 @@ const ViewAllList = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4">Submitted Items</h2>
+      <h2 className="text-2xl font-bold mb-4">All Lists</h2>
       <input
         type="text"
-        placeholder="Search items..."
+        placeholder="Search lists..."
         className="mb-4 p-2 border border-gray-300 rounded"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
@@ -91,95 +51,13 @@ const ViewAllList = () => {
             </h3>
             <p>Optional Note: {list.optionalNote}</p>
 
-            {list.items && list.items.map((item) => (
-              <div key={item.id} className="mt-2">
-                <p>Item Name: {item.name}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-            ))}
-
-            {/* Share icon that generates a PDF when clicked */}
-            <button 
-              onClick={() => generatePDF(list)} 
-              className="mt-2 text-blue-500 hover:underline flex items-center"
-            >
-              <FontAwesomeIcon icon={faShareAlt} className="mr-2" />
-              Share List
-            </button>
-
-            <button
-              onClick={() => openEditModal(list)}
-              className="mt-2 bg-blue-300 text-white px-4 py-2 rounded"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(list.id)}
-              className="mt-2 ml-2 bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Delete
-            </button>
+            {/* View List Button */}
+            <Link to={`/list/${list.id}`} className="mt-2 text-blue-500 hover:underline">
+              View List
+            </Link>
           </div>
         ))}
       </div>
-
-      {modalOpen && editItem && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full">
-            <h2 className="text-xl mb-4">Edit Item</h2>
-            <form onSubmit={handleEdit}>
-              <div className="mb-4">
-                <label className="block">Item Name:</label>
-                <input
-                  type="text"
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded"
-                  value={editItem.name}
-                  onChange={(e) => setEditItem({ ...editItem, name: e.target.value })}
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block">Quantity:</label>
-                <input
-                  type="number"
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded"
-                  value={editItem.quantity}
-                  onChange={(e) => setEditItem({ ...editItem, quantity: e.target.value })}
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block">Category:</label>
-                <select
-                  value={editItem.category}
-                  onChange={(e) => setEditItem({ ...editItem, category: e.target.value })}
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded"
-                >
-                  <option value="groceries">Groceries</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="clothing">Clothing</option>
-                </select>
-              </div>
-              <div className="mb-4">
-                <label className="block">Optional Note:</label>
-                <textarea
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded"
-                  value={editItem.optionalNote}
-                  onChange={(e) => setEditItem({ ...editItem, optionalNote: e.target.value })}
-                />
-              </div>
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-                Save Changes
-              </button>
-              <button
-                type="button"
-                onClick={closeEditModal}
-                className="ml-2 bg-gray-500 text-white px-4 py-2 rounded"
-              >
-                Cancel
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

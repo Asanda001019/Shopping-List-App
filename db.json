@@ -465,59 +465,23 @@
       "id": "4c3e"
     },
     {
-      "id": "59dd",
-      "items": [
-        {
-          "name": "Meat",
-          "quantity": "1"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "Chicken only"
-    },
-    {
       "id": "da74",
       "items": [
         {
           "name": "Charger",
           "quantity": "1"
+        },
+        {
+          "name": "qweq",
+          "quantity": "2"
+        },
+        {
+          "name": "1wqwq",
+          "quantity": "2"
         }
       ],
       "category": "electronics",
       "optionalNote": "Type c"
-    },
-    {
-      "id": "35b1",
-      "items": [
-        {
-          "name": "Jacket",
-          "quantity": "1"
-        }
-      ],
-      "category": "clothing",
-      "optionalNote": "Extra large size"
-    },
-    {
-      "id": "fd1d",
-      "items": [
-        {
-          "name": "ERT",
-          "quantity": "5"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "bnb"
-    },
-    {
-      "id": "f9c4",
-      "items": [
-        {
-          "name": "eee",
-          "quantity": "3"
-        }
-      ],
-      "category": "groceries",
-      "optionalNote": "fd"
     },
     {
       "id": "b7c9",
@@ -529,6 +493,43 @@
       ],
       "category": "clothing",
       "optionalNote": "ss"
+    },
+    {
+      "id": "5e45",
+      "items": [
+        {
+          "name": "charger",
+          "quantity": "1"
+        },
+        {
+          "name": "Earphones",
+          "quantity": "1"
+        }
+      ],
+      "category": "electronics",
+      "optionalNote": "WW"
+    },
+    {
+      "id": "5322",
+      "items": [
+        {
+          "name": "ad",
+          "quantity": "2"
+        }
+      ],
+      "category": "groceries",
+      "optionalNote": "222"
+    },
+    {
+      "id": "1525",
+      "items": [
+        {
+          "name": "qq",
+          "quantity": "2"
+        }
+      ],
+      "category": "clothing",
+      "optionalNote": "asanda"
     }
   ],
   "categories": [
