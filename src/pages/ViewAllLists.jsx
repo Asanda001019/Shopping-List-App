@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faLaptop, faTshirt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faLaptop, faTshirt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLists, deleteList } from '../features/listSlice';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const categoryIcons = {
   groceries: faShoppingCart,
@@ -51,13 +51,22 @@ const ViewAllList = () => {
             </h3>
             <p>Optional Note: {list.optionalNote}</p>
 
-            {/* View List Button */}
             <Link to={`/list/${list.id}`} className="mt-2 text-blue-500 hover:underline">
               View List
             </Link>
           </div>
         ))}
       </div>
+
+      {/* Floating Cart Icon */}
+      
+      <Link
+        to="/add"
+        className="fixed bottom-100 right-6 bg-blue-500 text-white rounded-full p-4 shadow-lg hover:bg-blue-600"
+      >
+        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+       
+      </Link>
     </div>
   );
 };

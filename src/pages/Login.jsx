@@ -16,7 +16,7 @@ const LoginForm = () => {
 
     try {
       const foundUser = await dispatch(loginUser({ email, password })).unwrap(); 
-      navigate('/add'); // Navigate to add list page if login is successful
+      navigate('/all'); // Navigate to view list page if login is successful
     } catch (error) {
       // Check if the error corresponds to invalid credentials
       if (error.message.includes("Invalid credentials")) {

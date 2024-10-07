@@ -499,7 +499,7 @@
       "items": [
         {
           "name": "charger",
-          "quantity": "2"
+          "quantity": "1"
         }
       ],
       "category": "electronics",
@@ -520,8 +520,8 @@
       "id": "1525",
       "items": [
         {
-          "name": "qq",
-          "quantity": "2"
+          "name": "Tshirt",
+          "quantity": "6"
         }
       ],
       "category": "clothing",
@@ -542,6 +542,17 @@
       ],
       "category": "groceries",
       "optionalNote": "asa"
+    },
+    {
+      "id": "d37a",
+      "items": [
+        {
+          "name": "asa",
+          "quantity": "1"
+        }
+      ],
+      "category": "clothing",
+      "optionalNote": "aq"
     }
   ],
   "categories": [
